@@ -23,8 +23,56 @@ I used Heroku to host my bot to have it always connected. I also used their serv
 
 First of all, you need to have [`NodeJs`](!https://github.com/nodejs/node) set up in your machine. You can find everything needed in the GitHub link I shared.
 
-To get started you can `git clone  https://github.com/DYasser/DiscordBot.git` and have `NodeJs` installed and initialized as I said already. You can run the file then by using the command `npm start` on any command line interpreter in the main folder.
+To get started you can `git clone  https://github.com/DYasser/DiscordBot.git` and have `NodeJs` installed and initialized as I said earlier. You can run the file then by using the command `npm start` on any command line interpreter in the main folder.
 
 ## Coding process
 
 I started creating this project just like any `NodeJs` project by initializing the project using `npm init` then started coding on the `main.js` file.
+
+I first started by importing all the libraries I needed such as [`Discord.js`](!https://github.com/discordjs/discord.js/), [`express`](!https://github.com/expressjs/express), [`fs`](!https://github.com/nodejs/node/blob/master/doc/api/fs.md), and other really useful ones. I then set up the database using the `mysql` library. 
+
+After setting up all the above, I am then able to start coding my Discord Bot. I start by setting up a prefix that the user is going to use. In this case, I chose `?` as a prefix.
+
+```javascript
+const prefix = '?';
+```
+
+I then used the code below to make the program understand first where the commands are situated, then the set of command name and command code.
+
+```javascript
+const commandFiles = fs.readdirSync('./commands/').filter( file => file.endsWith('.js'));
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`);
+
+    client.commands.set(command.name, command);
+}
+```
+
+I then set up each command by prompting the program when it reads a message starting with the selected prefix. I then take the command, remove the prefix, and change it to lower case to be able to be able to let the user use the commands as they want and not make it harder for them to use the bot. 
+
+```javascript
+client.on('message', message => {
+  if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift();//.toLowerCase();
+  [...]
+}
+```
+
+Since there are lots of commands here I will show only a few, but feel free to go through the code in details in case you saw any interesting command.
+
+I stored all the commands in a file to be able to go through them easily using for loops in the code. 
+Before I start explaining some complex commands, I will present you this simple one to understand the structure of each command.
+
+```javascript
+module.exports = {
+  name: 'ping',
+  description: 'pong',
+  type: 'fun',
+  execute(message, args){
+      message.channel.send("pong!");
+  }
+}
+```
+All the commands are coded in the same way to be able to retrieve any information easily. Each command has a `name`, a `description` that would be used in the help command, a `type` for the same reason, and finaly the command that is directly executed. In this case, the executiong program is really simple, it just prompts the program to send a message in the chat **"pong!"**
