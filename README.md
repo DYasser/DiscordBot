@@ -1,7 +1,6 @@
 # Discord Bot
-> The first discord bot I experience coding. Yume as in dream in Japanese.
 
-This was my first experience coding a discord bot, so I just played with it a little bit. I didn't intend to make any innovative command only was a tad curious about how discord bots work. I used **Node.js** and **Discord.js** to create this bot.
+This was my first experience coding a discord bot, so I enjoyed learning about it. I was quite surprised of how many possibilities there were when I started coding this bot. I used `NodeJs` and `Discord.js` to create this bot.
 
 ### [Commands](https://github.com/DYasser/DiscordBot/tree/master/commands):  
 - [**choose:**](https://github.com/DYasser/DiscordBot/blob/master/commands/choose.js) helps the user to choose between many choices.
@@ -15,7 +14,17 @@ This was my first experience coding a discord bot, so I just played with it a li
 - [**pingtest:**](https://github.com/DYasser/DiscordBot/blob/master/commands/pingtest.js) tests the ping of the user.
 - [**ping:**](https://github.com/DYasser/DiscordBot/blob/master/commands/ping.js) pong.
 
-I have added a folder api that I intended to use for all needed routes, but I found myself not using it and left it there just in case.
+I have added a folder api that I intended to use for all needed routes to have an optimized program.
 
 ### Heroku:
-I used Heroku to host my bot so that I don't need to each time run it for it to be connected. I also used the database from there (that I already removed so the cridentials in the code can't be used ^^)
+I used Heroku to host my bot to have it always connected. I also used their server to host my `MySql` database that I used in some functions.
+
+## How to run it
+
+First of all, you need to have [`NodeJs`](!https://github.com/nodejs/node) set up in your machine. You can find everything needed in the GitHub link I shared.
+
+To get started you can `git clone  https://github.com/DYasser/DiscordBot.git` and have `NodeJs` installed and initialized as I said already. You can run the file then by using the command `npm start` on any command line interpreter in the main folder.
+
+## Coding process
+
+I started creating this project just like any `NodeJs` project by initializing the project using `npm init` then started coding on the `main.js` file.
