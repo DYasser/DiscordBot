@@ -76,3 +76,41 @@ module.exports = {
 }
 ```
 All the commands are coded in the same way to be able to retrieve any information easily. Each command has a `name`, a `description` that would be used in the help command, a `type` for the same reason, and finaly the command that is directly executed. In this case, the executiong program is really simple, it just prompts the program to send a message in the chat **"pong!"**
+
+![pingCommand](./ss/ping.png)
+
+Another command that I would like to present is the request command that allows the user to submit a request of a command to the database that I would be able to view. 
+
+```javascript
+module.exports = {
+    name: 'request',
+    description: 'Request a command to my creator',
+    type: 'utility',
+    execute(message, args, connection){
+        const member = message.member;
+        let username = member.user.username;
+
+        let msg = message.content.split(" ");
+
+        msg.shift();
+        let command = msg[0];
+
+        msg.shift();
+        let description = msg.join(" ", msg); 
+
+        connection.query(`
+        INSERT INTO requests(username, commandName, description) 
+        VALUES ( "`+ username +`",
+            "`+ command +`",
+            "`+ description +`")`)
+
+        message.channel.send("Command name: " + command+ "\nDescription: " + description + "\nsent by "+`${member}`+"!");
+    }
+}
+```
+
+The message is being split to be then used inside an SQL command that would be used to insert each value inside the table.
+
+That is it for my Discord bot presentation, I learned a lot from this and got to use my `javascript` skills.
+
+>           this is the end of my documentation
