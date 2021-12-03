@@ -15,7 +15,7 @@ This was my first experience coding a discord bot, so I enjoyed learning about i
 - [**ping:**](https://github.com/DYasser/DiscordBot/blob/master/commands/ping.js) pong.
 
 I have added a folder api that I intended to use for all needed routes to have an optimized program.
-
+ 
 ### Heroku:
 I used Heroku to host my bot to have it always connected. I also used their server to host my `MySql` database that I used in some functions.
 
