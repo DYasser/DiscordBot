@@ -77,8 +77,6 @@ module.exports = {
 ```
 All the commands are coded in the same way to be able to retrieve any information easily. Each command has a `name`, a `description` that would be used in the help command, a `type` for the same reason, and finaly the command that is directly executed. In this case, the executiong program is really simple, it just prompts the program to send a message in the chat **"pong!"**
 
-![pingCommand](./ss/ping.png)
-
 Another command that I would like to present is the request command that allows the user to submit a request of a command to the database that I would be able to view. 
 
 ```javascript
